@@ -43,34 +43,3 @@ Tabs.Panel = function Panel({ id, children }) {
 };
 
 export default Tabs;
-
-// ── Solution ──────────────────────────────────────────────────────────────────
-/*
-function Tabs({ defaultTab, children }) {
-  const [active, setActive] = useState(defaultTab);
-  return (
-    <TabsContext.Provider value={{ active, setActive }}>
-      {children}
-    </TabsContext.Provider>
-  );
-}
-
-Tabs.Tab = function Tab({ id, children }) {
-  const { active, setActive } = useContext(TabsContext);
-  return (
-    <button
-      role="tab"
-      aria-selected={active === id}
-      style={{ fontWeight: active === id ? "bold" : "normal" }}
-      onClick={() => setActive(id)}
-    >
-      {children}
-    </button>
-  );
-};
-
-Tabs.Panel = function Panel({ id, children }) {
-  const { active } = useContext(TabsContext);
-  return active === id ? <div role="tabpanel">{children}</div> : null;
-};
-*/

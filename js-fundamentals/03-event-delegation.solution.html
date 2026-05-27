@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Solution 3 – Event Delegation</title>
+  <style>
+    body { font-family: sans-serif; max-width: 480px; margin: 2rem auto; }
+    #todo-list { list-style: none; padding: 0; }
+    #todo-list li {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.5rem; border-bottom: 1px solid #eee;
+    }
+    #todo-list li.done .label { text-decoration: line-through; color: #aaa; }
+    button { cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Todo List</h2>
+  <div>
+    <input id="todo-input" type="text" placeholder="New task…" />
+    <button id="add-btn">Add</button>
+  </div>
+  <ul id="todo-list"></ul>
+
+  <script>
+    const input  = document.getElementById("todo-input");
+    const addBtn = document.getElementById("add-btn");
+    const list   = document.getElementById("todo-list");
+
+    addBtn.addEventListener("click", () => {
+      const text = input.value.trim();
+      if (!text) return;
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="label">${text}</span>
+                      <button data-action="delete">Delete</button>`;
+      list.appendChild(li);
+      input.value = "";
+    });
+
+    // Single delegated listener handles all deletes and done-toggles
+    list.addEventListener("click", (e) => {
+      if (e.target.dataset.action === "delete") {
+        e.target.closest("li").remove();
+      }
+      if (e.target.classList.contains("label")) {
+        e.target.closest("li").classList.toggle("done");
+      }
+    });
+  </script>
+</body>
+</html>

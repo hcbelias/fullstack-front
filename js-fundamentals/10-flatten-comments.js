@@ -48,28 +48,3 @@ function flattenCommentsIterative(root) {
 const result = flattenComments(tree);
 console.log(JSON.stringify(result));
 // Expected: [{"id":1,"text":"Root","depth":0},{"id":2,"text":"Child A","depth":1},{"id":4,"text":"Nested","depth":2},{"id":3,"text":"Child B","depth":1}]
-
-// ── Solution ──────────────────────────────────────────────────────────────────
-/*
-function flattenComments(node, depth = 0) {
-  const { children, ...rest } = node;
-  return [
-    { ...rest, depth },
-    ...children.flatMap((child) => flattenComments(child, depth + 1)),
-  ];
-}
-
-function flattenCommentsIterative(root) {
-  const result = [];
-  const stack = [{ node: root, depth: 0 }];
-  while (stack.length) {
-    const { node, depth } = stack.shift(); // shift = breadth-first; use pop() for depth-first
-    const { children, ...rest } = node;
-    result.push({ ...rest, depth });
-    for (let i = children.length - 1; i >= 0; i--) {
-      stack.unshift({ node: children[i], depth: depth + 1 }); // unshift preserves order with shift
-    }
-  }
-  return result;
-}
-*/

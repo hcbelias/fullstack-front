@@ -51,22 +51,3 @@ async function runTests() {
 }
 
 runTests().catch(console.error);
-
-// ────────────────────────────────────────────────────────────────────────────
-// SOLUTION
-// ────────────────────────────────────────────────────────────────────────────
-/*
-function myPromiseAll(promises) {
-  return new Promise((resolve, reject) => {
-    if (promises.length === 0) return resolve([]);
-    const results = new Array(promises.length);
-    let remaining = promises.length;
-    promises.forEach((p, i) => {
-      Promise.resolve(p).then((val) => {
-        results[i] = val;
-        if (--remaining === 0) resolve(results);
-      }, reject);
-    });
-  });
-}
-*/

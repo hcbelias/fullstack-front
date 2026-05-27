@@ -48,27 +48,6 @@
       // YOUR CODE HERE – handle delete (and bonus: done toggle)
     });
 
-    // ── Solution (expand after attempting) ──────────────────────────────────
-    /*
-    addBtn.addEventListener("click", () => {
-      const text = input.value.trim();
-      if (!text) return;
-      const li = document.createElement("li");
-      li.innerHTML = `<span class="label">${text}</span>
-                      <button data-action="delete">Delete</button>`;
-      list.appendChild(li);
-      input.value = "";
-    });
-
-    list.addEventListener("click", (e) => {
-      if (e.target.dataset.action === "delete") {
-        e.target.closest("li").remove();
-      }
-      if (e.target.classList.contains("label")) {
-        e.target.closest("li").classList.toggle("done");
-      }
-    });
-    */
   </script>
 </body>
 </html>

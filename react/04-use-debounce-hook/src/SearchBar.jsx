@@ -46,24 +46,3 @@ export default function SearchBar() {
     </div>
   );
 }
-
-// ── Solution ──────────────────────────────────────────────────────────────────
-/*
-  useEffect(() => {
-    if (!debouncedQuery) { setResults([]); return; }
-    let cancelled = false;
-    setLoading(true);
-    fetchResults(debouncedQuery).then((data) => {
-      if (!cancelled) { setResults(data); setLoading(false); }
-    });
-    return () => { cancelled = true; };
-  }, [debouncedQuery]);
-
-  return (
-    <div>
-      <input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search fruit…" />
-      {loading && <p>Searching…</p>}
-      <ul>{results.map((r) => <li key={r}>{r}</li>)}</ul>
-    </div>
-  );
-*/
