@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Exercise 3 – Event Delegation</title>
+  <style>
+    body { font-family: sans-serif; max-width: 480px; margin: 2rem auto; }
+    #todo-list { list-style: none; padding: 0; }
+    #todo-list li {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.5rem; border-bottom: 1px solid #eee;
+    }
+    button { cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h2>Todo List</h2>
+  <div>
+    <input id="todo-input" type="text" placeholder="New task…" />
+    <button id="add-btn">Add</button>
+  </div>
+  <ul id="todo-list"></ul>
+
+  <script>
+    // ─── TASK ────────────────────────────────────────────────────────────────
+    // 1. Clicking "Add" appends a new <li> with the input text + a "Delete" button.
+    // 2. Clicking any "Delete" button removes that <li>.
+    //
+    // CONSTRAINT: attach exactly ONE event listener — on #todo-list — to handle
+    // all delete clicks (event delegation). Do not attach listeners to individual
+    // delete buttons.
+    //
+    // BONUS: support marking items done by clicking the text (toggle a CSS class).
+    // ─────────────────────────────────────────────────────────────────────────
+
+    const input   = document.getElementById("todo-input");
+    const addBtn  = document.getElementById("add-btn");
+    const list    = document.getElementById("todo-list");
+
+    addBtn.addEventListener("click", () => {
+      const text = input.value.trim();
+      if (!text) return;
+      // YOUR CODE HERE – build and append the <li>
+      input.value = "";
+    });
+
+    list.addEventListener("click", (e) => {
+      // YOUR CODE HERE – handle delete (and bonus: done toggle)
+    });
+
+    // ── Solution (expand after attempting) ──────────────────────────────────
+    /*
+    addBtn.addEventListener("click", () => {
+      const text = input.value.trim();
+      if (!text) return;
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="label">${text}</span>
+                      <button data-action="delete">Delete</button>`;
+      list.appendChild(li);
+      input.value = "";
+    });
+
+    list.addEventListener("click", (e) => {
+      if (e.target.dataset.action === "delete") {
+        e.target.closest("li").remove();
+      }
+      if (e.target.classList.contains("label")) {
+        e.target.closest("li").classList.toggle("done");
+      }
+    });
+    */
+  </script>
+</body>
+</html>
